@@ -5,9 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context="home.learn.hmt.the_weather_kotlin.screen.home.HomeActivity"
         >
         <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
@@ -23,5 +24,5 @@
             android:layout_height="match_parent"
             app:layout_constraintTop_toBottomOf="@id/ah_tab_contain"
             />
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 </layout>
