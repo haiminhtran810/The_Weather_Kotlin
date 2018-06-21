@@ -20,9 +20,7 @@ abstract class BaseDataBindActivity<T : ViewDataBinding, K : BaseViewModel> : Ba
   }
 
   override fun onDestroy() {
-    if (mViewModel != null) {
-      mViewModel.onActivityDestroyed()
-    }
+    mViewModel.onActivityDestroyed()
     super.onDestroy()
   }
 
