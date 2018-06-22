@@ -11,6 +11,9 @@ import home.learn.hmt.the_weather_kotlin.screen.home.HomeActivity
 import home.learn.hmt.the_weather_kotlin.utils.ActivityUtils
 
 class SplashActivity : BaseDataLoadActivity<ActivitySplashBinding, SplashViewModel>(), SplashNavigator {
+  override fun showError(errorMessage: String) {
+
+  }
 
   private var mDelayHandler: Handler? = null
 

@@ -6,4 +6,5 @@ package home.learn.hmt.the_weather_kotlin.base.navigator
 interface BaseNavigator {
   fun finish()
   fun onBackPressed()
+  fun showError(errorMessage : String)
 }

@@ -5,6 +5,6 @@ package home.learn.hmt.the_weather_kotlin.data
  */
 class Constant {
   companion object {
-    var SPLASH_DELAY : Long = 5*1000
+    var SPLASH_DELAY : Long = 1*1000
   }
 }
