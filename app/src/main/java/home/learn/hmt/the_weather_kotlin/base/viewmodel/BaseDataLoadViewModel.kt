@@ -7,4 +7,7 @@ import android.arch.lifecycle.MutableLiveData
  */
 abstract class BaseDataLoadViewModel : BaseViewModel() {
   val isDataLoading = MutableLiveData<Boolean>().apply { value = false }
+  init {
+
+  }
 }

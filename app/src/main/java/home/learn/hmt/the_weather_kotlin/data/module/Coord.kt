@@ -1,10 +1,14 @@
 package home.learn.hmt.the_weather_kotlin.data.module
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 
 /**
  * Created by hcm-102-0006 on 21/06/2018.
  */
-class Coord(
-    var lat : Double,
-    var lon : Double
-)
+@Parcelize
+data class Coord(
+    val lat: Double,
+    val lon: Double
+) : Parcelable

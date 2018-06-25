@@ -15,6 +15,9 @@ import home.learn.hmt.the_weather_kotlin.screen.home.mapweather.MapFragment
 // reference : http://androidcodehub.com/android-workingwith-bottom-navigation/
 
 class HomeActivity : BaseDataLoadActivity<ActivityHomeBinding, HomeViewModel>(), HomeNavigator {
+  override fun showError(errorMessage: String) {
+
+  }
 
   private lateinit var ahNavigation: AHBottomNavigation
   private lateinit var ahBottomNavigationAdapter: AHBottomNavigationAdapter
