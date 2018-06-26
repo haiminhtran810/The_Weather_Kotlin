@@ -12,5 +12,7 @@ data class WeatherData(
     val name: String = "",
     val cod: Int,
     val base: String = "",
-    val visibility: Int
+    val visibility: Int,
+    val main: Main,
+    val weather: List<Weather>
 ) : Parcelable

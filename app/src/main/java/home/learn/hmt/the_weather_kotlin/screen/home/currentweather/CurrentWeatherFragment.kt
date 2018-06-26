@@ -3,21 +3,21 @@ package home.learn.hmt.the_weather_kotlin.screen.home.currentweather
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import home.learn.hmt.the_weather_kotlin.R
-import home.learn.hmt.the_weather_kotlin.base.screen.fragment.BaseDataBindFragment
 import home.learn.hmt.the_weather_kotlin.base.screen.fragment.BaseDataLoadFragment
 import home.learn.hmt.the_weather_kotlin.databinding.FragmentCurrentWeatherBinding
+import kotlinx.android.synthetic.main.fragment_current_weather.*
 
 
 /**
  * A simple [Fragment] subclass.
  */
 class CurrentWeatherFragment : BaseDataLoadFragment<FragmentCurrentWeatherBinding, CurrentWeatherViewModel>(), CurrentWeatherNavigator {
+  override fun hideShowLoading(isShow: Boolean) {
+    refresh_data_current_weather.isRefreshing = isShow
+  }
+
   override fun showError(errorMessage: String) {
     Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
   }
@@ -37,6 +37,13 @@ class CurrentWeatherFragment : BaseDataLoadFragment<FragmentCurrentWeatherBindin
     super.initData()
     mViewModel.apply {
       loadData()
+    }
+    refresh_data_current_weather.apply {
+      setOnRefreshListener {
+        mViewModel.apply {
+          loadData()
+        }
+      }
     }
   }
 
