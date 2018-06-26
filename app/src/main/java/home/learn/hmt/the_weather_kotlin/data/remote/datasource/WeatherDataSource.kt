@@ -1,6 +1,7 @@
 package home.learn.hmt.the_weather_kotlin.data.remote.datasource
 
 import home.learn.hmt.the_weather_kotlin.BuildConfig
+import home.learn.hmt.the_weather_kotlin.data.module.Forecast53Data
 import home.learn.hmt.the_weather_kotlin.data.module.WeatherData
 import home.learn.hmt.the_weather_kotlin.data.remote.service.WeatherClient
 import io.reactivex.Single
@@ -11,7 +12,6 @@ import io.reactivex.schedulers.Schedulers
  * Created by hcm-102-0006 on 21/06/2018.
  */
 class WeatherDataSource : IWeatherDataSource {
-
   companion object {
     private var instance: WeatherDataSource? = null
 
@@ -25,6 +25,12 @@ class WeatherDataSource : IWeatherDataSource {
 
   override fun getCurrentWeather(lat: Double, lon: Double): Single<WeatherData> {
     return WeatherClient.getApiInstance().getCurrentWeather(lat, lon,
+        BuildConfig.WEATHER_API_KEY).subscribeOn(Schedulers.io()).observeOn(
+        AndroidSchedulers.mainThread())
+  }
+
+  override fun getDailyWeather(lat: Double, lon: Double): Single<Forecast53Data> {
+    return WeatherClient.getApiInstance().getDailyWeather(lat, lon, 10,
         BuildConfig.WEATHER_API_KEY).subscribeOn(Schedulers.io()).observeOn(
         AndroidSchedulers.mainThread())
   }

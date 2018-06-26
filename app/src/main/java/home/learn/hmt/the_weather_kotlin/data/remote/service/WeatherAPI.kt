@@ -1,5 +1,6 @@
 package home.learn.hmt.the_weather_kotlin.data.remote.service
 
+import home.learn.hmt.the_weather_kotlin.data.module.Forecast53Data
 import home.learn.hmt.the_weather_kotlin.data.module.WeatherData
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -15,4 +16,13 @@ interface WeatherAPI {
       @Query("lon") lon: Double,
       @Query("appid") appid: String
   ): Single<WeatherData>
+
+  @GET("data/2.5/forecast/daily")
+  fun getDailyWeather(
+      @Query("lat") lat: Double,
+      @Query("lon") lon: Double,
+      @Query("cnt") cnt: Int,
+      @Query("appid") appid: String
+  ): Single<Forecast53Data>
+
 }

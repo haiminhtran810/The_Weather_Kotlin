@@ -1,5 +1,6 @@
 package home.learn.hmt.the_weather_kotlin.data.remote
 
+import home.learn.hmt.the_weather_kotlin.data.module.Forecast53Data
 import home.learn.hmt.the_weather_kotlin.data.module.WeatherData
 import home.learn.hmt.the_weather_kotlin.data.remote.datasource.IWeatherDataSource
 import home.learn.hmt.the_weather_kotlin.data.remote.datasource.WeatherDataSource
@@ -25,4 +26,7 @@ class WeatherRepository(var iWeatherDataSource: IWeatherDataSource) : IWeatherDa
     return iWeatherDataSource.getCurrentWeather(lat, lon)
   }
 
+  override fun getDailyWeather(lat: Double, lon: Double): Single<Forecast53Data> {
+    return iWeatherDataSource.getDailyWeather(lat, lon)
+  }
 }

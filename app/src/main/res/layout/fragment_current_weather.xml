@@ -2,20 +2,86 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     >
-
     <data>
-
+        <variable
+            name="weather"
+            type="home.learn.hmt.the_weather_kotlin.screen.home.currentweather.CurrentWeatherViewModel"
+            />
     </data>
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="home.learn.hmt.the_weather_kotlin.screen.home.currentweather.CurrentWeatherFragment"
         >
-        <TextView
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refresh_data_current_weather"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Current"
-            />
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    >
+                    <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/current"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/dp_40"
+                        android:textStyle="bold"
+                        />
 
-    </FrameLayout>
+                    <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
+                        android:id="@+id/txtdesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Thumdershower"
+                        />
+
+                    <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
+                        android:id="@+id/txtC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="24C"
+                        />
+
+                    <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
+                        android:id="@+id/txtWind"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="wind"
+                        />
+
+                    <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
+                        android:id="@+id/txtCloud"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="UV"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    >
+                    <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
+                        android:id="@+id/txtCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="TPHCM"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
 </layout>

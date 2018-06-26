@@ -3,6 +3,7 @@
     package="home.learn.hmt.the_weather_kotlin">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
