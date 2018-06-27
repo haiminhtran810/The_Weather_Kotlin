@@ -1,7 +1,9 @@
 package home.learn.hmt.the_weather_kotlin.screen.home.currentweather
 
 import android.arch.lifecycle.MutableLiveData
+import home.learn.hmt.the_weather_kotlin.BuildConfig
 import home.learn.hmt.the_weather_kotlin.base.viewmodel.BaseDataLoadViewModel
+import home.learn.hmt.the_weather_kotlin.data.module.Forecast53Data
 import home.learn.hmt.the_weather_kotlin.data.module.WeatherData
 import home.learn.hmt.the_weather_kotlin.data.remote.WeatherRepository
 import io.reactivex.observers.DisposableSingleObserver
@@ -17,10 +19,11 @@ class CurrentWeatherViewModel : BaseDataLoadViewModel() {
   private var weatherRepository: WeatherRepository = WeatherRepository.getInstance()
   lateinit var navigator: CurrentWeatherNavigator
   val weatherData = MutableLiveData<WeatherData>()
-  var temp = MutableLiveData<String>()
-  var des = MutableLiveData<String>()
-  var wind = MutableLiveData<String>()
-  var cloud = MutableLiveData<String>()
+  val temp = MutableLiveData<String>()
+  val des = MutableLiveData<String>()
+  val wind = MutableLiveData<String>()
+  val cloud = MutableLiveData<String>()
+  val urlICon = MutableLiveData<String>()
 
   init {
 
@@ -33,6 +36,7 @@ class CurrentWeatherViewModel : BaseDataLoadViewModel() {
         weatherData.value = t
         temp.value = t.main.temp.toString()
         des.value = t.weather?.get(0)?.description
+        urlICon.value = BuildConfig.BASE_URL_ICON + t.weather?.get(0)?.icon + ".png"
         wind.value = t.wind?.toString()
         cloud.value = t.cloud?.toString()
         navigator.hideShowLoading(false)
@@ -41,6 +45,19 @@ class CurrentWeatherViewModel : BaseDataLoadViewModel() {
       override fun onError(e: Throwable) {
         navigator.showError(e.message ?: "")
       }
+    })
+
+
+    weatherRepository.getDailyWeather(10.802283,
+        106.714573).subscribe(object : DisposableSingleObserver<Forecast53Data>() {
+      override fun onSuccess(t: Forecast53Data) {
+        val data = t
+      }
+
+      override fun onError(e: Throwable) {
+        navigator.showError(e.message!!)
+      }
+
     })
   }
 }
