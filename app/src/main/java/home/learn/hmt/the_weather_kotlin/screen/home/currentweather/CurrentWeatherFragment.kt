@@ -35,6 +35,9 @@ class CurrentWeatherFragment : BaseDataLoadFragment<FragmentCurrentWeatherBindin
 
   override fun initData() {
     super.initData()
+    mBinding.apply {
+      weather = mViewModel
+    }
     mViewModel.apply {
       loadData()
     }

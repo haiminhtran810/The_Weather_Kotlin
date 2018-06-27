@@ -22,11 +22,11 @@ class WeatherRepository(var iWeatherDataSource: IWeatherDataSource) : IWeatherDa
     }
   }
 
-  override fun getCurrentWeather(lat: Double, lon: Double): Single<WeatherData> {
-    return iWeatherDataSource.getCurrentWeather(lat, lon)
+  override fun getCurrentWeather(lat: Double, long: Double): Single<WeatherData> {
+    return iWeatherDataSource.getCurrentWeather(lat, long)
   }
 
-  override fun getDailyWeather(lat: Double, lon: Double): Single<Forecast53Data> {
-    return iWeatherDataSource.getDailyWeather(lat, lon)
+  override fun getDailyWeather(lat: Double, long: Double): Single<Forecast53Data> {
+    return iWeatherDataSource.getDailyWeather(lat, long)
   }
 }

@@ -23,14 +23,14 @@ class WeatherDataSource : IWeatherDataSource {
     }
   }
 
-  override fun getCurrentWeather(lat: Double, lon: Double): Single<WeatherData> {
-    return WeatherClient.getApiInstance().getCurrentWeather(lat, lon,
+  override fun getCurrentWeather(lat: Double, long: Double): Single<WeatherData> {
+    return WeatherClient.getApiInstance().getCurrentWeather(lat, long,
         BuildConfig.WEATHER_API_KEY).subscribeOn(Schedulers.io()).observeOn(
         AndroidSchedulers.mainThread())
   }
 
-  override fun getDailyWeather(lat: Double, lon: Double): Single<Forecast53Data> {
-    return WeatherClient.getApiInstance().getDailyWeather(lat, lon, 10,
+  override fun getDailyWeather(lat: Double, long: Double): Single<Forecast53Data> {
+    return WeatherClient.getApiInstance().getDailyWeather(lat, long, 10,
         BuildConfig.WEATHER_API_KEY).subscribeOn(Schedulers.io()).observeOn(
         AndroidSchedulers.mainThread())
   }

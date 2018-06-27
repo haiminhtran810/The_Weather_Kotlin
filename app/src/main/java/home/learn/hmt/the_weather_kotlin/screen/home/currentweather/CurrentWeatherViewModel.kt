@@ -16,7 +16,11 @@ class CurrentWeatherViewModel : BaseDataLoadViewModel() {
 
   private var weatherRepository: WeatherRepository = WeatherRepository.getInstance()
   lateinit var navigator: CurrentWeatherNavigator
-  var weather = MutableLiveData<WeatherData>()
+  val weatherData = MutableLiveData<WeatherData>()
+  var temp = MutableLiveData<String>()
+  var des = MutableLiveData<String>()
+  var wind = MutableLiveData<String>()
+  var cloud = MutableLiveData<String>()
 
   init {
 
@@ -26,7 +30,11 @@ class CurrentWeatherViewModel : BaseDataLoadViewModel() {
     weatherRepository.getCurrentWeather(10.802283,
         106.714573).subscribe(object : DisposableSingleObserver<WeatherData>() {
       override fun onSuccess(t: WeatherData) {
-        weather.apply { value = t }
+        weatherData.value = t
+        temp.value = t.main.temp.toString()
+        des.value = t.weather?.get(0)?.description
+        wind.value = t.wind?.toString()
+        cloud.value = t.cloud?.toString()
         navigator.hideShowLoading(false)
       }
 
