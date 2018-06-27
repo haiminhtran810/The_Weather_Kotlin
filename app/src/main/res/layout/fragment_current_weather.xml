@@ -42,6 +42,7 @@
                         android:id="@+id/txtdesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@{weather.des}"
                         tools:text="Thumdershower"
                         />
 
@@ -49,6 +50,7 @@
                         android:id="@+id/txtC"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@{weather.temp}"
                         tools:text="24C"
                         />
 
@@ -56,13 +58,15 @@
                         android:id="@+id/txtWind"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:text="wind"
+                        android:text="@{weather.wind}"
+                        tools:text="Wind"
                         />
 
                     <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
                         android:id="@+id/txtCloud"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@{weather.cloud}"
                         tools:text="UV"
                         />
 
@@ -77,6 +81,7 @@
                         android:id="@+id/txtCity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@{weather.weatherData.name}"
                         tools:text="TPHCM"
                         />
                 </LinearLayout>

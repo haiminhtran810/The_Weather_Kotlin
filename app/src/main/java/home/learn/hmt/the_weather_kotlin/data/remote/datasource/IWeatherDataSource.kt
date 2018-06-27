@@ -8,6 +8,6 @@ import io.reactivex.Single
  * Created by hcm-102-0006 on 21/06/2018.
  */
 interface IWeatherDataSource {
-  fun getCurrentWeather(lat: Double, lon: Double): Single<WeatherData>
-  fun getDailyWeather(lat: Double, lon: Double): Single<Forecast53Data>
+  fun getCurrentWeather(lat: Double, long: Double): Single<WeatherData>
+  fun getDailyWeather(lat: Double, long: Double): Single<Forecast53Data>
 }

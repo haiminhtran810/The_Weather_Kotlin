@@ -30,7 +30,11 @@ abstract class BaseDataBindFragment<viewBinding : ViewDataBinding, viewModel : B
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
       savedInstanceState: Bundle?): View? {
-    mBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
+    mBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)!!
+    mBinding.apply {
+      root.isClickable = true // can click background
+      setLifecycleOwner(this@BaseDataBindFragment)
+    }
     return mBinding.root
   }
 

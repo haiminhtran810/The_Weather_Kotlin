@@ -13,14 +13,14 @@ interface WeatherAPI {
   @GET("data/2.5/weather")
   fun getCurrentWeather(
       @Query("lat") lat: Double,
-      @Query("lon") lon: Double,
+      @Query("lon") long: Double,
       @Query("appid") appid: String
   ): Single<WeatherData>
 
   @GET("data/2.5/forecast/daily")
   fun getDailyWeather(
       @Query("lat") lat: Double,
-      @Query("lon") lon: Double,
+      @Query("lon") long: Double,
       @Query("cnt") cnt: Int,
       @Query("appid") appid: String
   ): Single<Forecast53Data>
