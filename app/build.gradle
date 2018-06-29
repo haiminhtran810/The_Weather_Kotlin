@@ -63,18 +63,23 @@ android {
   applicationVariants.all { variant ->
     def BASE_URL
     def WEATHER_API_KEY
+    def BASE_URL_ICON
     if (variant.getName().contains("dev")) {
       BASE_URL = "http://api.openweathermap.org/"
+      BASE_URL_ICON = "http://openweathermap.org/img/w/"
     } else if (variant.getName().contains("stg")) {
       BASE_URL = "http://api.openweathermap.org/"
+      BASE_URL_ICON = "http://openweathermap.org/img/w/"
     } else if (variant.getName().contains("pro")) {
       BASE_URL = "http://api.openweathermap.org/"
+      BASE_URL_ICON = "http://openweathermap.org/img/w/"
     }
 
     WEATHER_API_KEY = '"' + key_open_weather_api + '"' ?: '"Define your key"'
 
     variant.buildConfigField "String", "BASE_URL", "\"${BASE_URL}\""
     variant.buildConfigField "String", "WEATHER_API_KEY", WEATHER_API_KEY
+    variant.buildConfigField "String", "BASE_URL_ICON", "\"${BASE_URL_ICON}\""
   }
   buildToolsVersion '27.0.3'
 }
@@ -122,5 +127,8 @@ dependencies {
   compileOnly 'javax.annotation:jsr250-api:1.0'
   implementation 'javax.inject:javax.inject:1'
 
-
+  // Glide
+  implementation("com.github.bumptech.glide:glide:4.3.1") {
+    exclude module: 'support-annotations'
+  }
 }

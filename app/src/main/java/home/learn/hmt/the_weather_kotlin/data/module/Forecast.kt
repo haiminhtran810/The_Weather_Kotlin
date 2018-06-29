@@ -13,5 +13,6 @@ data class Forecast(
     val sys: Sys,
     val main: Main,
     val weather: List<Weather>,
-    val wind: Wind
+    val wind: Wind,
+    val temp: Temp
 ) : Parcelable

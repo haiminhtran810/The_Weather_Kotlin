@@ -1,5 +1,7 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
     <data>
@@ -19,16 +21,32 @@
             android:layout_height="match_parent"
             >
             <LinearLayout
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 >
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:orientation="vertical"
                     >
+                    <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
+                        android:id="@+id/txtCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{weather.weatherData.name}"
+                        android:textAlignment="center"
+                        tools:text="TPHCM"
+                        />
+
+                    <ImageView
+                        android:id="@+id/img_Current"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_50"
+                        bind:loadImageView="@{weather.urlICon}"
+                        />
                     <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -38,53 +56,48 @@
                         android:textStyle="bold"
                         />
 
-                    <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
-                        android:id="@+id/txtdesc"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{weather.des}"
-                        tools:text="Thumdershower"
-                        />
+                        android:layout_marginLeft="@dimen/sp_12"
+                        android:layout_marginRight="@dimen/sp_12"
+                        android:orientation="vertical"
+                        >
+                        <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
+                            android:id="@+id/txtdesc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{weather.des}"
+                            tools:text="Thumdershower"
+                            />
 
-                    <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
-                        android:id="@+id/txtC"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{weather.temp}"
-                        tools:text="24C"
-                        />
+                        <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
+                            android:id="@+id/txtC"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{weather.temp}"
+                            tools:text="24C"
+                            />
 
-                    <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
-                        android:id="@+id/txtWind"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{weather.wind}"
-                        tools:text="Wind"
-                        />
+                        <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
+                            android:id="@+id/txtWind"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{weather.wind}"
+                            tools:text="Wind"
+                            />
 
-                    <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
-                        android:id="@+id/txtCloud"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{weather.cloud}"
-                        tools:text="UV"
-                        />
+                        <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
+                            android:id="@+id/txtCloud"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{weather.cloud}"
+                            tools:text="UV"
+                            />
+                    </LinearLayout>
 
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    >
-                    <home.learn.hmt.the_weather_kotlin.widges.CustomTextView
-                        android:id="@+id/txtCity"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{weather.weatherData.name}"
-                        tools:text="TPHCM"
-                        />
-                </LinearLayout>
+
             </LinearLayout>
 
         </android.support.v4.widget.SwipeRefreshLayout>

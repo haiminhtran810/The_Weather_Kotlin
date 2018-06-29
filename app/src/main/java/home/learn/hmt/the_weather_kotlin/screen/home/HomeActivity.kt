@@ -48,7 +48,7 @@ class HomeActivity : BaseDataLoadActivity<ActivityHomeBinding, HomeViewModel>(),
     }
     ahNavigation.apply {
       titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
-      setOnTabSelectedListener({ position, isSelected ->
+      setOnTabSelectedListener({ position, _ ->
         onNavigationBotItemClick(position)
       })
     }
