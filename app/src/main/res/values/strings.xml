@@ -7,4 +7,6 @@
     <string name="tab_hour">Hour</string>
     <string name="tab_map">Map</string>
     <string name="current">Current</string>
+    <string name="high">High</string>
+    <string name="low">Low</string>
 </resources>
